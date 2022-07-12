@@ -1,0 +1,14 @@
+#contenitoreTabella{
+    text-align: center;
+}
+
+button{
+    color: blue;
+}
+
+.dipendente{
+    width: 30rem;
+    left: 30rem;
+    right: 30rem;
+}
+
