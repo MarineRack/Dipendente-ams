@@ -16,6 +16,7 @@ import {MatCardModule} from '@angular/material/card';
 import { LoginComponent } from './login/login.component';
 import { AmministratoreComponent } from './amministratore/amministratore.component';
 import {MatIconModule} from '@angular/material/icon';
+import {MatRippleModule} from '@angular/material/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatSelectModule,
     MatCardModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatRippleModule
 
   ],
   providers: [],

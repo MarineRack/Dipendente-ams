@@ -1,7 +1,7 @@
 import { Component} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { giorno } from '../interfaces/giorno';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup} from '@angular/forms';
+import { MeseService } from '../services/mese.service';
 
 @Component({
   selector: 'app-rilevazione-ore',
@@ -10,10 +10,9 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RilevazioneOreComponent{
 
+  formMese: FormGroup;
 
-  formGiorno:FormGroup
-
-  oreGiorno = new MatTableDataSource<giorno>()
+  dataSource:MatTableDataSource<any>
 
   dataOggi:Date=new Date()
   anno:number=this.dataOggi.getFullYear()
@@ -22,46 +21,16 @@ export class RilevazioneOreComponent{
 
   displayedColumns: string[] = ['Giorno', 'Cliente', 'Ore','Straordinario', 'Ore Compensate', 'Ore Permesso Retr', 'Ore Permesso NR','Ferie','Mutua','Festivo'];
 
-  constructor(private fb:FormBuilder){
+  constructor(private fb:FormBuilder,private meseServ:MeseService){
 
+    this.formMese = this.fb.group({
+      giorni: this.fb.array([]),
+    });
 
-    this.formGiorno=this.fb.group({
-      cliente:["Azienda 1"],
-      ore:[],
-      ore_straordinario:[],
-      ore_compensate:[],
-      oreP_retribuite:[],
-      oreP_nonRetribuite:[],      
-      ore_ferie:[],
-      ore_mutua:[],
-      festivo:[false]
-    })
-    
-    
-    for(let i=1;i<=this.giorniMese;i++){
-      const weekDay=new Date(this.anno,this.mese-1,i-1).getDay()
+      this.formMese.setControl('giorni',meseServ.inFormArray(this.anno,this.mese-1,this.giorniMese))
 
-      this.oreGiorno.data.push(
-        {
-          giorno:i,
-          giornoS:weekDay,
-          cliente:"",
-          ore_Servizio:0,
-          straordinario:0,
-          ore_Compensate:0,
-          ore_Permesso:{
-              retribuite:0,
-              Nn_Retribuite:0,
-          },
-          ore_Ferie:0,
-          ore_Mutua:0,
-          festivo:false
-        }
-      )
-    }
-    //console.log(JSON.stringify(this.oreGiorno.data,null,4))
+      this.dataSource=new MatTableDataSource( (this.formMese.get('giorni')as FormArray).controls )
+      
   }
-
-  
 
 }

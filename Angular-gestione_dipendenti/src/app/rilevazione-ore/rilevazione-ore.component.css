@@ -60,9 +60,9 @@
   padding: 0.5%;
 }
 
-mat-card{
-  left: 12%;
-  right: 12.5%;
-}
 
+mat-card#lerileri{
+ position: static;
+ 
+}
 
