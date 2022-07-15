@@ -23,6 +23,8 @@ public class Anag_giorno_schede_mesi {
 	@JsonProperty("id")
 	private Integer idRecord;
 	
+	private Integer oreInteger;
+	
 	@ManyToOne(fetch =FetchType.EAGER)
 	@JoinColumn(name="id_cliente_cui_lavora")
 	@JsonProperty("lavoro")
@@ -32,4 +34,19 @@ public class Anag_giorno_schede_mesi {
 	@JoinColumn(name="id_rilevazione_mese")
 	@JsonProperty("rilevazione_mese")
 	Rilevazione_ore_mese rilevazione_ore_mese;
+
+	public Integer getIdRecord() {
+		return idRecord;
+	}
+	public void setIdRecord(Integer idRecord) {
+		this.idRecord = idRecord;
+	}
+	
+	public Integer getOreInteger() {
+		return oreInteger;
+	}
+
+	public void setOreInteger(Integer oreInteger) {
+		this.oreInteger = oreInteger;
+	}
 }

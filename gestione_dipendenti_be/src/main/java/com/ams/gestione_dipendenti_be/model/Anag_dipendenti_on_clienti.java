@@ -38,7 +38,7 @@ public class Anag_dipendenti_on_clienti {
 	@JsonProperty("dipendente")
 	Anag_clienti anag_dipendenti;
 	
-	@OneToMany(mappedBy = "Anag_dipendenti_on_clienti",fetch =FetchType.EAGER,cascade = CascadeType.ALL,orphanRemoval = true)
+	@OneToMany(mappedBy = "anag_dipendenti_on_clienti",fetch =FetchType.EAGER,cascade = CascadeType.ALL,orphanRemoval = true)
 	private Set<Anag_giorno_schede_mesi> anag_giorno_schede_mesi= new HashSet<>();
 	
 	
