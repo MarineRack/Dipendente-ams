@@ -19,34 +19,46 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 
-@Table(name = "anag_dipendenti_on_clienti")
-public class Anag_dipendenti_on_clienti {
+@Table(name = "rilevazione_ore_mese")
+public class Rilevazione_ore_mese {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id")
 	@JsonProperty("id")
-	private Integer idDipSuClient;
+	private Integer idOreMese;
 	
-	@ManyToOne(fetch =FetchType.EAGER)
-	@JoinColumn(name="id_cliente")
-	@JsonProperty("cliente")
-	Anag_clienti anag_clienti;
+	private short compilato;
 	
 	@ManyToOne(fetch =FetchType.EAGER)
 	@JoinColumn(name="id_dipendente")
 	@JsonProperty("dipendente")
-	Anag_clienti anag_dipendenti;
+	Anag_dipendenti anag_dipendenti;
 	
-	@OneToMany(mappedBy = "Anag_dipendenti_on_clienti",fetch =FetchType.EAGER,cascade = CascadeType.ALL,orphanRemoval = true)
+	@ManyToOne(fetch =FetchType.EAGER)
+	@JoinColumn(name="id_mese")
+	@JsonProperty("mese")
+	Mesi mesi;
+	
+	@ManyToOne(fetch =FetchType.EAGER)
+	@JoinColumn(name="anno")
+	@JsonProperty("anno")
+	Anni anni;
+	
+	@OneToMany(mappedBy = "rilevazione_ore_mese",fetch =FetchType.EAGER,cascade = CascadeType.ALL,orphanRemoval = true)
 	private Set<Anag_giorno_schede_mesi> anag_giorno_schede_mesi= new HashSet<>();
 	
 	
-	public Integer getIdDipSuClient() {
-		return idDipSuClient;
+	public Integer getIdOreMese() {
+		return idOreMese;
 	}
-	
-	public void setIdDipSuClient(Integer idDipSuClient) {
-		this.idDipSuClient = idDipSuClient;
+	public void setIdOreMese(Integer idOreMese) {
+		this.idOreMese = idOreMese;
+	}
+	public short getCompilato() {
+		return compilato;
+	}
+	public void setCompilato(short compilato) {
+		this.compilato = compilato;
 	}
 }
