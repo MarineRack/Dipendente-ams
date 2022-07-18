@@ -1,0 +1,24 @@
+<div id="login">
+<mat-card>
+    <p>
+    <mat-card-title>LOGIN</mat-card-title></p>
+    <form autocomplete="off">
+        <p>
+    <mat-form-field  appearance="fill" class="pieno" appearance="legacy">
+    <input matInput name="username" placeholder="Username">
+    </mat-form-field></p>
+    <p>
+    <mat-form-field  appearance="fill" class="pieno" appearance="legacy">
+    <input matInput  [type]="hide ? 'password' : 'text'" placeholder="Password">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field></p>
+    <p>
+    <button mat-raised-button color="primary" (click)="submit()"class="pieno">Submit</button>
+    <span *ngIf="show"> <button mat-button color="accent">Login success !!</button></span>
+  </p>  </form>
+    <a routerLink="/recupero">Password dimenticata?</a> 
+</mat-card>
+
+</div>

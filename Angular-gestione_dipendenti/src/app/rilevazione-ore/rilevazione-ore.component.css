@@ -1,0 +1,68 @@
+.example-container {
+    height: 270px;
+    overflow: auto;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  tr.mat-footer-row {
+    font-weight: bold;
+  }
+  
+  .mat-table-sticky {
+    border-top: 1px solid #e0e0e0;
+  }
+  table {
+    position: relative;
+    width: 80%;
+    left: 10%;
+    height: 100%;
+  }
+  th{
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    font-size: 120%;
+
+  }
+  th.mat-header-cell, td.mat-cell, td.mat-footer-cell{
+    width: 11.3%;
+    border-left-style: solid;
+    border-left-color: rgba(180, 180, 180, 0.58);
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-width: 1px;
+    text-align: center;
+    padding: 0%;
+  
+  }
+  .mat-form-field-infix {
+    display: block;
+    position: relative;
+    flex: auto;
+    min-width: 0;
+    /* width: 180px; */
+}
+  .nobordo{
+    border: none;
+    text-align: center;
+   font-size: large;
+   
+  }
+  input[type=number],select{
+    width: 90%;
+    height: 90%;
+  }
+#carta{
+  width: 80%;
+  padding: 0.5%;
+}
+
+
+mat-card#lerileri{
+ position: static;
+ 
+}
+

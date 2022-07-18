@@ -1,0 +1,92 @@
+<div id="carta">
+  <mat-card>Nome e cognome: <br>
+  Cliente: <br>
+  Mese: </mat-card>
+</div>
+
+<div id="contenitoreHeader">
+    <form [formGroup]="formMese">
+    <table mat-table class="mat-elevation-z8" [dataSource]="dataSource" >
+      <div >        
+        <ng-container matColumnDef="Giorno">
+          <th mat-header-cell *matHeaderCellDef> Giorno </th>
+          <td mat-cell *matCellDef="let element"> {{element.value.giornoSettimana}} {{element.value.giorno}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="Cliente">
+          <th mat-header-cell *matHeaderCellDef> Cliente </th>
+          <td mat-cell *matCellDef="let element, let i=index" [formGroup]="element"> 
+            <form appearance="fill" class="fit">
+                <select  class="nobordo" formControlName="cliente">
+                  <option value="1"> Azienda 1 </option>
+                  <option value="2"> Azienda 2</option>
+                </select>
+            </form>
+          </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="Ore">
+          <th mat-header-cell *matHeaderCellDef> Ore </th>
+          <td mat-cell *matCellDef="let element" [formGroup]="element">
+              <input  formControlName="ore_Servizio" class="nobordo" type="number" matInput #input maxlength="1" min="1" max="8">
+          </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="Straordinario">
+          <th mat-header-cell *matHeaderCellDef> Straordinario </th>
+          <td mat-cell *matCellDef="let element" [formGroup]="element">
+            
+            <input formControlName="ore_Straordinario" class="nobordo" type="number" matInput #input maxlength="1" min="1" max="24">
+          </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="Ferie">
+          <th mat-header-cell *matHeaderCellDef> Ferie </th>
+          <td mat-cell *matCellDef="let element" [formGroup]="element">
+            <input formControlName="ore_Ferie" class="nobordo" type="number" matInput #input maxlength="1" min="1" max="8">
+          </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="Mutua">
+          <th mat-header-cell *matHeaderCellDef> Mutua </th>
+          <td mat-cell *matCellDef="let element" [formGroup]="element">
+            <input formControlName="ore_Mutua" class="nobordo" type="number" matInput #input maxlength="1" min="1" max="8">
+            
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="Ore Permesso Retr">
+          <th mat-header-cell *matHeaderCellDef> Ore Permesso Retr </th>
+          <td mat-cell *matCellDef="let element" [formGroup]="element">
+            <input formControlName="ore_Retribuite" class="nobordo" type="number" matInput #input maxlength="1" min="1" max="8">
+          </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="Ore Permesso NR">
+          <th mat-header-cell *matHeaderCellDef> Ore Permesso<br> NR </th>
+          <td mat-cell *matCellDef="let element" [formGroup]="element"> 
+            <input formControlName="ore_Nn_Retribuite" class="nobordo" type="number" matInput #input maxlength="1" min="1" max="8">
+          </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="Ore Compensate">
+          <th mat-header-cell *matHeaderCellDef> Ore Compensate </th>
+          <td mat-cell *matCellDef="let element" [formGroup]="element"> 
+            <input formControlName="ore_Compensate" class="nobordo" type="number" matInput #input maxlength="1" min="1" max="8">
+          </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="Festivo">
+          <th mat-header-cell *matHeaderCellDef> Festivo</th>
+          <td mat-cell *matCellDef="let element" [formGroup]="element"> 
+          <input type="checkbox" name="ferie" value="true">
+          </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </div>
+    </table>
+  </form>
+    </div>
+<mat-card id="lerileri"><code>{{formMese.value|json}}</code></mat-card>
