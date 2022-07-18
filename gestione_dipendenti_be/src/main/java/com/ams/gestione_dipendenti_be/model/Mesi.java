@@ -27,6 +27,14 @@ public class Mesi {
 	@OneToMany(mappedBy = "mesi",fetch =FetchType.EAGER,cascade = CascadeType.ALL,orphanRemoval = true)
 	private Set<Rilevazione_ore_mese> rilevazione_ore_mese= new HashSet<>();
 	
+	public Mesi() {
+	}
+	
+	public Mesi(Integer idMese,String nome) {
+		this.idMese=idMese;
+		this.nome=nome;
+	}
+	
 	public void setIdMese(Integer idMese) {
 		this.idMese = idMese;
 	}

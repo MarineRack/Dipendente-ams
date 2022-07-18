@@ -26,6 +26,12 @@ public class Anni {
 	@OneToMany(mappedBy = "anni",fetch =FetchType.EAGER,cascade = CascadeType.ALL,orphanRemoval = true)
 	private Set<Rilevazione_ore_mese> rilevazione_ore_mese= new HashSet<>();
 	
+	public Anni() {}
+	
+	public Anni(Integer anno) {
+		this.anno=anno;
+	}
+	
 	public void setAnno(Integer anno) {
 		this.anno = anno;
 	}
