@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RilevazioneOreComponent } from './rilevazione-ore/rilevazione-ore.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import {MatTableModule} from '@angular/material/table';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -16,13 +16,23 @@ import {MatCardModule} from '@angular/material/card';
 import { LoginComponent } from './login/login.component';
 import { AmministratoreComponent } from './amministratore/amministratore.component';
 import {MatIconModule} from '@angular/material/icon';
-import {MatRippleModule} from '@angular/material/core';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import { AdminClientiComponent } from './amministratore/admin-clienti/admin-clienti.component';
+import { AdminDipendentiComponent } from './amministratore/admin-dipendenti/admin-dipendenti.component';
+import { RecuperoPasswordComponent } from './recupero-password/recupero-password.component';
+import { PaginaControllaEmailComponent } from './pagina-controlla-email/pagina-controlla-email.component';
 @NgModule({
   declarations: [
     AppComponent,
     RilevazioneOreComponent,
     LoginComponent,
-    AmministratoreComponent
+    AmministratoreComponent,
+    AdminClientiComponent,
+    AdminDipendentiComponent,
+    RecuperoPasswordComponent,
+    PaginaControllaEmailComponent
+
   ],
   imports: [
     BrowserModule,
@@ -38,7 +48,10 @@ import {MatRippleModule} from '@angular/material/core';
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    MatRippleModule
+    MatRippleModule,
+    MatPaginatorModule,
+    MatSortModule,
+    
 
   ],
   providers: [],
