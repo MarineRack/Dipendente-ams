@@ -1,6 +1,7 @@
 package com.ams.gestione_dipendenti_be.model;
 
-import java.util.Date;
+
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,9 +12,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
@@ -29,13 +33,31 @@ public class Anag_dipendenti {
 	private String nome;
 	private String cognome;
 	private String email;
-	private Date dataNascita;
+	private String password;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+	private LocalDate dataNascita;
 	
 	@OneToMany(mappedBy = "anag_dipendenti",fetch =FetchType.EAGER,cascade = CascadeType.ALL,orphanRemoval = true)
 	private Set<Anag_dipendenti_on_clienti> anag_dipendenti_on_clienti= new HashSet<>();
 	
 	@OneToMany(mappedBy = "anag_dipendenti",fetch =FetchType.EAGER,cascade = CascadeType.ALL,orphanRemoval = true)
 	private Set<Rilevazione_ore_mese> rilevazione_ore_mese= new HashSet<>();
+	
+	@ManyToOne(fetch =FetchType.EAGER)
+	@JoinColumn(name="id_sesso")
+	@JsonProperty("sesso")
+	Sessi sessi;
+	
+	public Anag_dipendenti() {}
+	
+	public Anag_dipendenti(Integer idDipendente,String email,String password) {
+		this.idDipendente=idDipendente;
+		this.email=email;
+		this.password=password;
+		this.nome="admin";
+		this.cognome="ams";
+		this.dataNascita= LocalDate.now();
+	}
 	
 	public Integer getIdDipendente() {
 		return idDipendente;
@@ -63,11 +85,20 @@ public class Anag_dipendenti {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Date getDataNascita() {
+
+	public LocalDate getDataNascita() {
 		return dataNascita;
 	}
-	public void setDataNascita(Date dataNascita) {
+	public void setDataNascita(LocalDate dataNascita) {
 		this.dataNascita = dataNascita;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 }

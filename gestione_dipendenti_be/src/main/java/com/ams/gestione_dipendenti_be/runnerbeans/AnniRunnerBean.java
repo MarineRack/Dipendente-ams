@@ -2,7 +2,7 @@ package com.ams.gestione_dipendenti_be.runnerbeans;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Iterator;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -22,10 +22,11 @@ public class AnniRunnerBean implements ApplicationRunner{
 	public void run(ApplicationArguments args) throws Exception {
 		Calendar calendar= Calendar.getInstance();
 		calendar.setTime(new Date());
-		for (int i = 0; i <= 5; i++) {
-			aRepository.save(new Anni(calendar.get(Calendar.YEAR)+i) );
-			}
-		
+		if(aRepository.findById(calendar.get(Calendar.YEAR)).isEmpty()) {
+			for (int i = 0; i <= 5; i++) {
+				aRepository.save(new Anni(calendar.get(Calendar.YEAR)+i) );
+				}
+		}
 		
 	}
 
