@@ -35,6 +35,8 @@ public class Anag_dipendenti {
 	private String email;
 	private String password;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+	private LocalDate inizioServizio;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
 	private LocalDate dataNascita;
 	
 	@OneToMany(mappedBy = "anag_dipendenti",fetch =FetchType.EAGER,cascade = CascadeType.ALL,orphanRemoval = true)
@@ -99,6 +101,11 @@ public class Anag_dipendenti {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}public LocalDate getInizioServizio() {
+		return inizioServizio;
+	}
+	public void setInizioServizio(LocalDate inizioServizio) {
+		this.inizioServizio = inizioServizio;
 	}
 	
 }

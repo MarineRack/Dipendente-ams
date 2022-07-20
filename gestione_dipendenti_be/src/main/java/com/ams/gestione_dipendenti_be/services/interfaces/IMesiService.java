@@ -1,5 +1,7 @@
 package com.ams.gestione_dipendenti_be.services.interfaces;
 
-public interface IMesiService {
+import com.ams.gestione_dipendenti_be.model.Mesi;
 
+public interface IMesiService {
+	Iterable<Mesi> mesiAll();
 }

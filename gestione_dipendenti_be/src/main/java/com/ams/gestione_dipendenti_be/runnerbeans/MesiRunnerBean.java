@@ -1,23 +1,21 @@
 package com.ams.gestione_dipendenti_be.runnerbeans;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ApplicationArguments;
-import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import com.ams.gestione_dipendenti_be.model.Mesi;
 import com.ams.gestione_dipendenti_be.repository.MesiRepository;
 
-
-
 @Component
-public class MesiRunnerBean implements ApplicationRunner{
+public class MesiRunnerBean{
 	
 	@Autowired
 	MesiRepository mRepository;
 	
-	@Override
-	public void run(ApplicationArguments arg0) throws Exception {
+	@PostConstruct
+	public void runMesi() throws Exception {
 		if(mRepository.count()==0) {
 			mRepository.save(new  Mesi(1,"Gennaio") );
 			mRepository.save(new  Mesi(2,"Febbraio") );
