@@ -101,6 +101,7 @@ public class Anag_dipendenti {
 
 	public void setPassword(String password) {
 		this.password = password;
+		
 	}public LocalDate getInizioServizio() {
 		return inizioServizio;
 	}
