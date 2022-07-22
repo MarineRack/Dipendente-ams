@@ -48,6 +48,14 @@ public class Rilevazione_ore_mese {
 	@OneToMany(mappedBy = "rilevazione_ore_mese",fetch =FetchType.EAGER,cascade = CascadeType.ALL,orphanRemoval = true)
 	private Set<Anag_giorno_schede_mesi> anag_giorno_schede_mesi= new HashSet<>();
 	
+	public Rilevazione_ore_mese() {}
+	
+	public Rilevazione_ore_mese(Anag_dipendenti anag_dipendenti,Anni anni,Mesi mesi) {
+		this.anag_dipendenti=anag_dipendenti;
+		this.anni=anni;
+		this.mesi=mesi;
+		this.compilato=0;
+	}
 	
 	public Integer getIdOreMese() {
 		return idOreMese;

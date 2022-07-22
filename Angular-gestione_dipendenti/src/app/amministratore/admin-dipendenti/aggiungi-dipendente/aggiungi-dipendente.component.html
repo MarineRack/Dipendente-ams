@@ -1,0 +1,29 @@
+<mat-card>
+  <form   autocomplete="off">
+
+      <mat-form-field appearance="fill" class="pieno"> 
+          <mat-label>Nome</mat-label>
+          <input formControlName="nome" matInput #input maxlength="19">
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="pieno"> 
+        <mat-label>Cognome</mat-label>
+        <input formControlName="Cognome" matInput #input maxlength="19">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="pieno"> 
+    <mat-label>Email</mat-label>
+    <input formControlName="Email" matInput #input maxlength="19">
+    </mat-form-field>
+   
+      <mat-form-field class="pieno" appearance="fill">
+        <mat-label>Assignee</mat-label>
+        <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    
+      <button type="submit" mat-raised-button color="primary">Aggiungi Opesc</button>
+  </form>
+</mat-card>
